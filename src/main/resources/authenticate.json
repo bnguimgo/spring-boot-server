@@ -1,0 +1,19 @@
+{
+  "_comment": "This file is only for Postman test, please delete this line",
+  "id": 2,
+  "login": "admin@admin.com",
+  "password": "admin",
+  "active": 1,
+  "roles": [
+    {
+      "id": 2,
+      "roleName": "ROLE_USER"
+    },
+    {
+      "id": 1,
+      "roleName": "ROLE_ADMIN"
+    }
+  ],
+  "token": null,
+  "tokenExpirationDate": null
+}

@@ -1,0 +1,73 @@
+{
+  "authorization": [
+    {
+      "authType": "pattern",
+      "urlPattern": "/springboot-restserver/api/(api-docs|swagger|openapi).*",
+      "id": 1,
+      "authToken": false,
+      "scopes": [
+        {
+          "method": "*",
+          "scopesRequired": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "authType": "pattern",
+      "urlPattern": "/springboot-restserver/auth/user/users.*",
+      "id": 1,
+      "authToken": false,
+      "scopes": [
+        {
+          "method": "*",
+          "scopesRequired": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "authType": "pattern",
+      "urlPattern": "/springboot-restserver/docs/.*",
+      "id": 6,
+      "authToken": false,
+      "scopes": [
+        {
+          "method": "*",
+          "scopesRequired": [
+          ]
+        }
+      ]
+    },
+    {
+      "authType": "pattern",
+      "urlPattern": "/springboot-restserver/healthcheck",
+      "id": 2,
+      "authToken": false,
+      "scopes": [
+        {
+          "method": "*",
+          "scopesRequired": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "authType": "pattern",
+      "urlPattern": "/springboot-restserver/admin/.*",
+      "id": 3,
+      "authToken": true,
+      "scopes": [
+        {
+          "method": "*",
+          "scopesRequired": [
+            "tpr-cme-admin"
+          ]
+        }
+      ]
+    }
+  ]
+}
