@@ -34,8 +34,8 @@ public class User implements Serializable {
     @ManyToMany//(cascade = CascadeType.DETACH)
     @JoinTable(
         name = "USER_ROLE",
-        joinColumns = @JoinColumn(name = "USER_ID", nullable = false, updatable = false),
-        inverseJoinColumns = @JoinColumn(name = "ROLE_ID", nullable = false, updatable = false))
+        joinColumns = @JoinColumn(name = "USER_ID", nullable = false, updatable = false, insertable = false),
+        inverseJoinColumns = @JoinColumn(name = "ROLE_ID", nullable = false, updatable = false, insertable = false))
     private Set<Role> roles = new HashSet<>();
 
     public User() {

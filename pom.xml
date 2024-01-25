@@ -16,7 +16,7 @@
 <!--	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
+		<version>3.2.2</version>
 		<relativePath/>
 	</parent>-->
 
@@ -25,8 +25,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
-		<spring-boot.version>3.2.0</spring-boot.version>
-		<cargo.version>1.9.9</cargo.version>
+		<spring-boot.version>3.2.2</spring-boot.version>
+		<jjwt.version>0.12.3</jjwt.version>
+		<cargo.version>1.10.6</cargo.version>
 		<tomcat.version>10.1.16</tomcat.version>
 		<!--<springfox.version>3.0.0</springfox.version>-->
 		<springdoc-openapi.version>1.7.0</springdoc-openapi.version>
@@ -35,6 +36,9 @@
 
 		<skip.surefire.tests>true</skip.surefire.tests>
 		<skip.failsafe.tests>false</skip.failsafe.tests>
+		<failsafe.version>3.2.5</failsafe.version>
+		<surefire.version>3.2.2</surefire.version>
+		<lombok.version>1.18.26</lombok.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -81,13 +85,13 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
+			<version>${jjwt.version}</version>
 		</dependency>
 		<!-- dependency for Jwts.parser() -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
+			<version>2.4.0-b180830.0359</version>
 		</dependency>
 
 		<!-- For cache manager-->
@@ -121,13 +125,13 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
-			<version>4.0</version>
+			<version>4.4</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -165,6 +169,12 @@
 			<artifactId>cargo-maven3-plugin</artifactId>
 			<version>${cargo.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-failsafe-plugin</artifactId>
+			<version>${failsafe.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -195,11 +205,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.2.2</version>
+				<version>${surefire.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>**/*IntegrationTest.java</exclude>
@@ -260,7 +271,9 @@
 						</executions>
 					</plugin>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${failsafe.version}</version>
 						<executions>
 							<execution>
 								<phase>integration-test</phase>
@@ -284,7 +297,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.2.2</version>
+						<version>${surefire.version}</version>
 						<configuration>
 							<skipTests>${skip.surefire.tests}</skipTests>
 						</configuration>
